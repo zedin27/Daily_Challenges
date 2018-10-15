@@ -67,6 +67,7 @@ is a simple task, but how would you go to the parent node? That is where I got
 stuck in the interview.
 """
 
+LeafSide = []
 # Tree class
 class Node:
 	def __init__(self, key):
@@ -74,35 +75,35 @@ class Node:
 		self.right = None
 		self.value = key
 
-# Maximum height of a tree
-def maxHeight(root):
+def leafHeight(root, leaf):
 	if root is None:
 		return 0
 	else:
-		return 1 + max(maxHeight(root.left), maxHeight(root.right))
+		if root.left is leaf:
+			aux = 1 + leafHeight(root.right, leaf)
+			LeafSide.append(aux)
+			return 1
+		if root.right is leaf:
+			aux = 1 + leafHeight(root.left, leaf)
+			LeafSide.append(aux)
+			return 1
+		return 1 + max(leafHeight(root.left, leaf), leafHeight(root.right, leaf))
 
-# Diameter of the tree
-def maxDiameter(root):
-	how_long = 0
-	if root is None:
-		return 0
-	else:
-		root_diameter = maxHeight(root.left) + maxHeight(root.right)
-
-		left_diameter = maxDiameter(root.left)
-		right_diameter = maxDiameter(root.right)
-		how_long = max(max(left_diameter, right_diameter), root_diameter)
-		return how_long
+def timeBurn(root, leaf):
+	hl = leafHeight(root.left, leaf)
+	hr = leafHeight(root.right, leaf)
+	opposite_LeafSide = 1 + hl + hr
+	return max(opposite_LeafSide, LeafSide[0])
 
 # Sample code
 root = Node(1)
-root.left = Node(2)
-root.right = Node(3)
-root.left.left = Node(4)
-root.left.right = Node(5)
-root.left.right.left = Node(6)
-root.left.right.right = Node(7)
-root.right.right = Node(10)
-root.right.right.right = Node(11)
-root.right.right.right.right = Node(12)
-print ("Starting from the given node, it will take %ds to burn the whole tree" % (maxDiameter(root.left.right)))
+root.left = Node(1)
+root.right = Node(1)
+root.left.left = Node(1)
+root.left.right = Node(1)
+root.left.right.left = Node(1)
+root.left.right.right = Node(1)
+root.right.right = Node(1)
+root.right.right.right = Node(1)
+root.right.right.right.right = Node(1)
+print ("Starting from the given node, it will take %ds to burn the whole tree" % (timeBurn(root, root.left.right)))
