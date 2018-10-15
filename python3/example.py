@@ -75,6 +75,7 @@ class Node:
 		self.right = None
 		self.value = key
 
+#Height of the leaf
 def leafHeight(root, leaf):
 	if root is None:
 		return 0
@@ -89,6 +90,7 @@ def leafHeight(root, leaf):
 			return 1
 		return 1 + max(leafHeight(root.left, leaf), leafHeight(root.right, leaf))
 
+#How long will it take to burn the the node to furthest node
 def timeBurn(root, leaf):
 	hl = leafHeight(root.left, leaf)
 	hr = leafHeight(root.right, leaf)
