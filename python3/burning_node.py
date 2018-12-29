@@ -1,8 +1,8 @@
-"""
-BURNING NODE
+r"""
+BURNING NODE.
 
-A binary tree is started burning from a leaf node.
-What is the time(1 second to burn from node to node) it takes to entire tree get burned?
+A binary tree is started burning from any node.
+What is the time (1 second to burn from node to node) it takes to entire tree get burned?
 The fire will spread to all the paths from a node.
 
 PERSONAL NOTES IN APPROACHING THIS PROBLEM
@@ -166,15 +166,18 @@ _______________________________________________________________________________"
 """
 
 LeafSide = []
-# Tree class
+
 class Node:
+	"""Tree class."""
+
 	def __init__(self, key):
+		"""Declare values of a node."""
 		self.left = None
 		self.right = None
 		self.value = key
 
-# Height of the leaf
 def leafHeight(root, leaf):
+	"""Height of the leaf."""
 	if root is None:
 		return 0
 	else:
@@ -188,14 +191,14 @@ def leafHeight(root, leaf):
 			return 1
 		return 1 + max(leafHeight(root.left, leaf), leafHeight(root.right, leaf))
 
-# How long will it take to burn the the node to furthest node
 def timeBurn(root, leaf):
+	"""How long will it take to burn the the node to furthest node."""
 	hl = leafHeight(root.left, leaf)
 	hr = leafHeight(root.right, leaf)
 	opposite_LeafSide = 1 + hl + hr
 	return max(opposite_LeafSide, LeafSide[0])
 
-# Sample code
+# Sample main
 root = Node(1)
 root.left = Node(1)
 root.right = Node(1)
