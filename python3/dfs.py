@@ -1,5 +1,17 @@
 """Simple DFS implemention with topological sort."""
 
+# Graph = {
+# 		V: ['A', 'B', 'C', 'D', 'E' 'F']
+# 		E: {
+# 			'A': ['B'],
+# 			'B': ['A', 'C', 'D'],
+# 			'C': ['B', 'D'],
+# 			'D': ['B', 'C'],
+# 			'E': ['F'],
+# 			'F': ['E']
+# 		}
+# 	}
+# import list
 adjacency_matrix = {
 					1: [2, 3],
 					2: [4, 5],
@@ -37,5 +49,24 @@ def DFS(graph, vertex, path=[]):
 
 	return path
 
+
+def DFS_dis(graph):
+	"""Traversal for undirected graphs."""
+	vertices = graph.keys()
+	edges = graph.values()
+	visited = []
+
+	def visit(vertex):
+		if vertex in visited:
+			return
+		visited.append(vertex)
+		print(vertex)
+		if vertex in edges:
+			for e in edges[vertex]:
+				visit(e)
+	for v in vertices:
+		visit(v)
+
 if __name__ == '__main__':
-	print(DFS(NEIGHBORS_MAP, 7))
+	# print(DFS(adjacency_matrix, 1))
+	DFS_dis(adjacency_matrix)
