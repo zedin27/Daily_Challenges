@@ -11,7 +11,7 @@
 # 			'F': ['E']
 # 		}
 # 	}
-# import list
+
 adjacency_matrix = {
 					1: [2, 3],
 					2: [4, 5],
@@ -41,8 +41,7 @@ def DFS(graph, vertex, path=[]):
 	"""Traversal inorder with a constant time complexity."""
 	path += [vertex]
 
-	print("Current path traversal value: ")
-	print(*path)
+	print("Current path traversal value: {0}".format(path))
 	for neighbor in graph[vertex]:
 		if neighbor not in path:
 			path = DFS(graph, neighbor, path)
@@ -59,8 +58,9 @@ def DFS_dis(graph):
 	def visit(vertex):
 		if vertex in visited:
 			return
+		print("Visited vertex: {0}".format(visited))
 		visited.append(vertex)
-		print(vertex)
+		print("Current vertex: {0}\n".format(vertex))
 		if vertex in edges:
 			for e in edges[vertex]:
 				visit(e)
@@ -68,5 +68,5 @@ def DFS_dis(graph):
 		visit(v)
 
 if __name__ == '__main__':
-	# print(DFS(adjacency_matrix, 1))
-	DFS_dis(adjacency_matrix)
+	print(DFS(adjacency_matrix, 1))
+	# DFS_dis(adjacency_matrix)
