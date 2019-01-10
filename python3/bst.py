@@ -5,9 +5,12 @@ Search, delete, insert, invert.
 
 class Node:
 	def __init__(self, key):
-		self.val = key
+		self.key = key
 		self.left = None
 		self.right = None
+
+	def __str__(self):
+		return str(self.key)
 
 def search(root, key):
 	if root is None or root.node == key:
@@ -20,7 +23,7 @@ def insert(root, node):
 	if root is None:
 		root = node
 	else:
-		if root.val < node.val:
+		if root.key < node.key:
 			if root.right is None:
 				root.right = node
 			else:
@@ -31,7 +34,7 @@ def insert(root, node):
 			else:
 				insert(root.left, node)
 
-def minVal(node):
+def minkey(node):
 	current = node
 
 	while(current.left is not None):
@@ -41,9 +44,9 @@ def minVal(node):
 def remove(root, key):
 	if root is None:
 		return root
-	if key < root.val:
+	if key < root.key:
 		root.left = remove(root.left, key)
-	elif key > root.val:
+	elif key > root.key:
 		root.right = remove(root.right, key)
 	else:
 		if root.left is None:
@@ -56,15 +59,15 @@ def remove(root, key):
 			root = None
 			return tmp
 
-		tmp = minVal(root.right)
-		root.val = tmp.val
-		root.right = remove(root.right, tmp.val)
+		tmp = minkey(root.right)
+		root.key = tmp.key
+		root.right = remove(root.right, tmp.key)
 
 	return root
 
 def preorder(root):
 	if root:
-		print(root.val)
+		print(root.key)
 		preorder(root.left)
 		preorder(root.right)
 
@@ -81,23 +84,23 @@ def inorder(root):
 		else:
 			if (len(stack) > 0):
 				current = stack.pop()
-				res.append(current.val)
+				res.append(current.key)
 				current = current.right
 			else:
 				flag = 1
 	print(res)
-	
+
 	# Recursive way
 	# if root:
 	# 	inorder(root.left)
-	# 	print(root.val)
+	# 	print(root.key)
 	# 	inorder(root.right)
 
 def postorder(root):
 	if root:
 		postorder(root.left)
 		postorder(root.right)
-		print(root.val)
+		print(root.key)
 
 def invert(root):
 	if root is None:
