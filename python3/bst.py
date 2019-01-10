@@ -1,6 +1,6 @@
 """Simple implementation of a BST.
 
-Search, delete, insert, invert.
+Search, delete, insert, mirror, and traversals.
 """
 
 class Node:
@@ -66,12 +66,16 @@ def remove(root, key):
 	return root
 
 def preorder(root):
+	"""Recursive traversal (root, left, right)."""
+
 	if root:
 		print(root.key)
 		preorder(root.left)
 		preorder(root.right)
 
 def inorder(root):
+	"""Non recursive traversal."""
+
 	current = root
 	stack = []
 	res = []
@@ -90,25 +94,26 @@ def inorder(root):
 				flag = 1
 	print(res)
 
-	# Recursive way
+	# """Recursive way (left, root, right)."""
 	# if root:
 	# 	inorder(root.left)
 	# 	print(root.key)
 	# 	inorder(root.right)
 
 def postorder(root):
+	"""Recursive traversal (left, right, root)."""
 	if root:
 		postorder(root.left)
 		postorder(root.right)
 		print(root.key)
 
-def invert(root):
+def mirror(root):
 	if root is None:
 		return root
 	root.left, root.right = root.right, root.left
 
-	invert(root.left)
-	inverting(root.right)
+	mirror(root.left)
+	mirror(root.right)
 
 	return root
 
@@ -124,3 +129,4 @@ if __name__ == '__main__':
 	# inorder(r)
 	remove(r, 50)
 	inorder(r)
+	mirror(r)
