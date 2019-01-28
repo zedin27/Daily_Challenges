@@ -194,14 +194,15 @@ Woah! This line of text should not be here.
 #                                                                                          #
 #---------------------------------------COMPLETE THE CODE 1:-------------------------------#
 
-##var1 = 2 #This is my variable. Var1. Do not change this.
-##
-##if <your variable name here> != 4:
-##    print "Uh Oh! Your variable doesn't equal 4!"
-##
-##var2 = <your variable here> + var1
-##
-##print var2
+var1 = 2 #This is my variable. Var1. Do not change this.
+yolo = 42
+
+if yolo != 4:
+   print "Uh Oh! Your variable doesn't equal 4!"
+
+var2 = yolo + var1
+
+print var2
 
 #---------------------------------------END WORKSPACE. DO NOT TYPE BELOW THIS--------------#
 #                                                                                          #
