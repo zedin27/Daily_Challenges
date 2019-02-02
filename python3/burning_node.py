@@ -169,45 +169,45 @@ _______________________________________________________________________________"
 LeafSide = []
 
 class Node:
-	"""Tree class."""
+    """Tree class."""
 
-	def __init__(self, key):
-		"""Declare values of a node."""
-		self.left = None
-		self.right = None
-		self.value = key
+    def __init__(self, key):
+        """Declare values of a node."""
+        self.left = None
+        self.right = None
+        self.value = key
 
 def leafHeight(root, leaf):
-	"""Height of the leaf."""
-	if root is None:
-		return 0
-	else:
-		if root.left is leaf:
-			aux = 1 + leafHeight(root.right, leaf)
-			LeafSide.append(aux)
-			return 1
-		if root.right is leaf:
-			aux = 1 + leafHeight(root.left, leaf)
-			LeafSide.append(aux)
-			return 1
-		return 1 + max(leafHeight(root.left, leaf), leafHeight(root.right, leaf))
+    """Height of the leaf."""
+    if root is None:
+        return 0
+    else:
+        if root.left is leaf:
+            aux = 1 + leafHeight(root.right, leaf)
+            LeafSide.append(aux)
+            return 1
+        if root.right is leaf:
+            aux = 1 + leafHeight(root.left, leaf)
+            LeafSide.append(aux)
+            return 1
+        return 1 + max(leafHeight(root.left, leaf), leafHeight(root.right, leaf))
 
 def timeBurn(root, leaf):
-	"""How long will it take to burn the the node to furthest node."""
-	hl = leafHeight(root.left, leaf)
-	hr = leafHeight(root.right, leaf)
-	opposite_LeafSide = 1 + hl + hr
-	return max(opposite_LeafSide, LeafSide[0])
+    """How long will it take to burn the the node to furthest node."""
+    hl = leafHeight(root.left, leaf)
+    hr = leafHeight(root.right, leaf)
+    opposite_LeafSide = 1 + hl + hr
+    return max(opposite_LeafSide, LeafSide[0])
 
 if __name__ == '__main__':
-	root = Node(1)
-	root.left = Node(1)
-	root.right = Node(1)
-	root.left.left = Node(1)
-	root.left.right = Node(1)
-	root.left.right.left = Node(1)
-	root.left.right.right = Node(1)
-	root.right.right = Node(1)
-	root.right.right.right = Node(1)
-	root.right.right.right.right = Node(1)
-	print ("Starting from the given node, it will take %ds to burn the whole tree" % (timeBurn(root, root.left.right)))
+    root = Node(1)
+    root.left = Node(1)
+    root.right = Node(1)
+    root.left.left = Node(1)
+    root.left.right = Node(1)
+    root.left.right.left = Node(1)
+    root.left.right.right = Node(1)
+    root.right.right = Node(1)
+    root.right.right.right = Node(1)
+    root.right.right.right.right = Node(1)
+    print ("Starting from the given node, it will take %ds to burn the whole tree" % (timeBurn(root, root.left.right)))

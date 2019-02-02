@@ -1,33 +1,33 @@
 class TreeNode:
-	def __init__(self, val):
-		self.val = val
-		self.left = None
-		self.right = None
+    def __init__(self, val):
+        self.val = val
+        self.left = None
+        self.right = None
 
 class Solution_recursive:
-	def isSameTree(self, p, q):
-		if p is None and q is None:
-			return True
+    def isSameTree(self, p, q):
+        if p is None and q is None:
+            return True
 
-		if p is not None and q is not None:
-			return ((p.val == q.val) and self.isSameTree(p.left, q.left) and self.isSameTree(p.right, q.right))
-		return False
+        if p is not None and q is not None:
+            return ((p.val == q.val) and self.isSameTree(p.left, q.left) and self.isSameTree(p.right, q.right))
+        return False
 
 class Solution:
-	def isSameTree(self, p, q):
-		stack = [(p, q)]
+    def isSameTree(self, p, q):
+        stack = [(p, q)]
 
-		while stack:
-			p, q = stack.pop()
+        while stack:
+            p, q = stack.pop()
 
-			if p is None and q is None:
-				continue
-			if not p or not q or p.val is not q.val:
-				return False
-			stack.append((p.right, q.right))
-			stack.append((p.left, q.left))
+            if p is None and q is None:
+                continue
+            if not p or not q or p.val is not q.val:
+                return False
+            stack.append((p.right, q.right))
+            stack.append((p.left, q.left))
 
-		return True
+        return True
 
 
 def stringToTreeNode(input):
