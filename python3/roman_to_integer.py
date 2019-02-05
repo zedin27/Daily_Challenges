@@ -45,11 +45,19 @@ def romanToInt(s):
     :type s: str
     :rtype: int
     """
-    # 
-    # res = 0
-    #
+
+    res = 0
+
+    """Original solution approach"""
     # while (s):
-    #
+    #     if s[:2] in ROMAN:
+    #         res += ROMAN[s[:2]]
+    #         s = s[2:]
+    #     elif s[:1] in ROMAN:
+    #         res += ROMAN[s[:1]]
+    #         s = s[1:]
+    #     else:
+    #         return -1
     # return res
 
     """First solution"""
@@ -72,3 +80,8 @@ def romanToInt(s):
 
 print(romanToInt("IV")) #4
 print(romanToInt("XXXIV")) #34
+print(romanToInt("V")) #5
+print(romanToInt("MMD")) #2500
+print(romanToInt("MDCLXI")) #1761
+print(romanToInt("")) #0
+print(romanToInt("-I")) #-1
