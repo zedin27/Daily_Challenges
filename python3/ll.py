@@ -2,47 +2,47 @@
 
 class Node:
     def __init__(self, data):
-    self.data = data
-    self.next = None
+        self.data = data
+        self.next = None
 
     def __str__(self):
-    return str(self.data)
+        return str(self.data)
 
 class LinkedList:
     def __init__(self):
-    self.head = None
+        self.head = None
 
     def insert(self, data):
-    node = Node(data)
-    node.next = self.head
-    self.head = node
+        node = Node(data)
+        node.next = self.head
+        self.head = node
 
     def print_list(self):
-    current = self.head
-    while current:
-    print (current.data, end = " ")
-    current = current.next
+        current = self.head
+        while current:
+            print (current.data, end = " ")
+            current = current.next
 
     def reverse_list(self):
-    prev = None
-    current = self.head
-    while current is not None:
-    next = current.next
-    current.next = prev
-    prev = current
-    current = next
-    self.head = prev
+        prev = None
+        current = self.head
+        while current is not None:
+            next = current.next
+            current.next = prev
+            prev = current
+            current = next
+        self.head = prev
 
     def deleteDuplicates(self):
-    current = second = self.head
+        current = second = self.head
 
-    while current is not None:
-    while second.next is not None:
-    if second.next.data == current.data:
-    second.next = second.next.next
-    else:
-    second = second.next
-    current = second = current.next
+        while current is not None:
+            while second.next is not None:
+                if second.next.data == current.data:
+                    second.next = second.next.next
+                else:
+                    second = second.next
+            current = second = current.next
 
     # Multiple ways to do deleteDuplicates
     # def deleteDuplicates(self):
@@ -78,5 +78,5 @@ if __name__ == '__main__':
     # l.print_list()
     l.deleteDuplicates()
     # l.print_list()
-    # l.reverse_list()
+    l.reverse_list()
     l.print_list()
