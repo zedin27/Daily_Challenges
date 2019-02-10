@@ -67,16 +67,17 @@ class LinkedList:
     # 			node = node.next
     # 	return node
 
+
 if __name__ == '__main__':
-    l = LinkedList()
-    l.insert(15)
-    l.insert(15)
-    l.insert(15)
-    l.insert(15)
-    l.insert(20)
-    l.insert(1)
+    lst = LinkedList()
+    lst.insert(15)
+    lst.insert(15)
+    lst.insert(15)
+    lst.insert(15)
+    lst.insert(20)
+    lst.insert(1)
     # l.print_list()
-    l.deleteDuplicates()
+    lst.deleteDuplicates()
     # l.print_list()
-    l.reverse_list()
-    l.print_list()
+    lst.reverse_list()
+    lst.print_list()

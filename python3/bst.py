@@ -3,7 +3,9 @@
 Search, delete, insert, mirror, and traversals.
 """
 
+
 class Node:
+    """Creating a node."""
     def __init__(self, key):
         self.key = key
         self.left = None
@@ -12,12 +14,14 @@ class Node:
     def __str__(self):
         return str(self.key)
 
+
 def search(root, key):
     if root is None or root.node == key:
         return root
     if root.node < key:
         return search(root.right, key)
     return search(root.left, key)
+
 
 def insert(root, node):
     if root is None:
@@ -34,12 +38,14 @@ def insert(root, node):
             else:
                 insert(root.left, node)
 
+
 def minkey(node):
     current = node
 
     while(current.left is not None):
         current = current.left
     return current
+
 
 def remove(root, key):
     if root is None:
@@ -65,6 +71,7 @@ def remove(root, key):
 
     return root
 
+
 def preorder(root):
     """Recursive traversal (root, left, right)."""
 
@@ -72,6 +79,7 @@ def preorder(root):
         print(root.key)
         preorder(root.left)
         preorder(root.right)
+
 
 def inorder(root):
     """Non recursive traversal."""
@@ -100,6 +108,7 @@ def inorder(root):
     #     print(root.key)
     #     inorder(root.right)
 
+
 def postorder(root):
     """Recursive traversal (left, right, root)."""
     if root:
@@ -107,7 +116,9 @@ def postorder(root):
         postorder(root.right)
         print(root.key)
 
+
 def mirror(root):
+    """Reflect left to right and vice-versa."""
     if root is None:
         return root
     root.left, root.right = root.right, root.left
@@ -116,6 +127,7 @@ def mirror(root):
     mirror(root.right)
 
     return root
+
 
 if __name__ == '__main__':
     r = Node(50)
