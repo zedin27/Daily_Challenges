@@ -1,6 +1,6 @@
 """Count possible ways to go through n'th staircase with DP."""
 
-def staircase_dp(n):
+def staircase(n):
     """Bottom-up approach."""
     dp = [0 for i in range(n + 1)]
 
@@ -12,8 +12,18 @@ def staircase_dp(n):
     return dp[n]
 
 
-if __name__ == '__main__':
-    steps = 6
-    n = 2
+def staircase_set(n, steps):
+    """Sum of all possible steps."""
+    cache = [0 for _ in range(n + 1)]
+    cache[0] = 1
+    for i in range(n + 1):
+        cache[i] += sum(cache[i - x] for x in steps if i - x > 0)
+        cache[i] += 1 if i in steps else 0
+    return cache[-1]
 
-    print("Number of ways to use the stairs = {0}".format(staircase_dp(steps)))
+if __name__ == '__main__':
+    n = 5
+    steps = [1, 2]
+
+    print("Number of ways to use the stairs = {0}".format(staircase_set(n, steps)))
+    print("Number of ways to use the stairs = {0}".format(staircase(n)))
