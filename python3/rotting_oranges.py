@@ -78,9 +78,9 @@ def findChildrenDoubleArray(grid):
 		if coords not in encountered:
 			encountered[coords] = True
 			nonDup.append(coords)
-	# print(list)
-	# print(nonDup)
-	# print(grid)
+	print("Rotten oranges grid spread: {}".format(list))
+	print("Non duplicated coordinates rotten oranges: {}".format(nonDup))
+	print("Grid after spread: {}".format(grid))
 	
 	for i in range(row):
 		for j in range(col):
