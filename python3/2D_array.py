@@ -1,20 +1,21 @@
 """Generating a 2D array."""
 if __name__ == '__main__':
-    col = 8
-    row = 5
-    Matrix = [[0 for x in range(col)] for y in range(row)]
-    Matrix[0][0] = 1
-    Matrix[0][6] = 3
-    Matrix[1][1] = 5
-    Matrix[4][5] = 9
+    cols = 5
+    rows = 4
+    start = 1
+    # Matrix = [[0 for x in range(cols)] for y in range(rows)]
+    # Matrix[0][0] = 1
+    # Matrix[0][6] = 3
+    # Matrix[1][1] = 5
+    # Matrix[4][5] = 9
 
-    print(Matrix[4][5])
-    print(Matrix)
+    # print(Matrix[4][5])
+    # print(Matrix)
 
     print("Shorter way to implement 2D arrays: ")
-    new_matrix = [[1]* col for i in range(5)]
+    matrix = [[start + col + cols * row for col in range(cols)] for row in range(rows)]
         # new_matrix[1][0] = 2
-    print(new_matrix)
+    print(matrix)
     # print("Now let us try to do inputted 2D arrays")
     #
     # rows = int(input('Enter cols\n'))
